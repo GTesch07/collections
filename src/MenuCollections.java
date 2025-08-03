@@ -1,12 +1,14 @@
 import java.util.*;
 
+import tesch.guilherme.models.MapCollections;
+
 public class MenuCollections {
     public static void main(String[] args) {
         var scanner = new Scanner(System.in);
 
         List<String> lista = new ArrayList<>();
         Set<String> conjunto = new HashSet<>();
-        Map<String, Integer> mapa = new HashMap<>();
+        Map<String, MapCollections> mapa = new HashMap<>();
 
         int option;
 
@@ -49,7 +51,9 @@ public class MenuCollections {
                     System.out.println("Digite o valor (idade): ");
                     int value = scanner.nextInt();
                     scanner.nextLine();
-                    mapa.put(key, value);
+
+                    MapCollections item = new MapCollections(key, value);
+                    mapa.put(key, item);
                     System.out.println("Adicionado ao mapa.");
                     break;
                 }
@@ -65,7 +69,9 @@ public class MenuCollections {
                 }
 
                 case 6 -> {
-                    System.out.println("Mapa: " + mapa);
+                    for (Map.Entry<String, MapCollections> entry : mapa.entrySet()) {
+                        System.out.println(entry.getValue());
+                    }
                     break;
                 }
 
